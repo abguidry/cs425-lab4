@@ -17,6 +17,19 @@ var Lab4 = ( function() {
              */
 
             // INSERT YOUR CODE HERE
+            
+            var userinp = parseInt($("#input").val());
+            var output = "";
+            var jsonRates = rates["rates"];
+            for(var key in jsonRates){
+                var endRates = (parseFloat(jsonRates[key]) * userinp);
+                endRates = Number.parseFloat(endRates).toFixed(2);
+                output += key + ": " + endRates+ "<br>";   
+                }
+                $("#output").html(output);
+                    
+                $("#output").append("<br> Date: "+ rates["date"]);
+            
 
         },
         

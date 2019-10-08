@@ -4,6 +4,8 @@ import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import org.json.simple.JSONObject;
@@ -116,8 +118,29 @@ public class Rates {
              *
              * *** INSERT YOUR CODE HERE ***
              */
+            row= iterator.next();
+            while(iterator.hasNext()){
+                row=iterator.next();
+                Double amt;
+                String mark;
+                for(int i =0; i < row.length; ++i){
+                    mark= row[1];
+                    amt= Double.parseDouble(row[2]);
+                    rates.put(mark,amt);
+                }
+                
+            }
+            Date date = new Date();
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = formatter.format(date);
+            
+            
+            
             
             json.put("rates", rates);
+            json.put("date", formattedDate);
+           
             
             /* Parse top-level container to a JSON string */
             
